@@ -11,7 +11,7 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
   } = cardStyles
 
   return (
-    <div className="bg-blue border-2 border-border text-white font-semibold rounded-xl my-7 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-4 px-2">
+    <div className="bg-blue border-2 border-border text-white font-semibold rounded-xl my-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-4 px-2">
       <div className="flex flex-col justify-center items-center gap-4 bg-blue-light rounded-md py-5 px-4">
         <p className="font-semibold text-xl text-golden">
           Circunferencia:

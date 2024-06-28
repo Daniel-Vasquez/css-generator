@@ -20,10 +20,21 @@ const CardEditor = () => {
 
   return (
     <>
-      <FormCard
-        cardStyles={cardStyles}
-        setCardStyles={setCardStyles}
-      />
+      <div className="mb-5">
+        <FormCard
+          cardStyles={cardStyles}
+          setCardStyles={setCardStyles}
+        />
+
+        <div className="flex justify-center">
+          <button
+            className="bg-golden text-white font-semibold py-2 px-4 rounded-md"
+            onClick={() => setCardStyles(STYLESDEFAULT)}
+          >
+            Restablecer
+          </button>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
         <CardPreview cardStyles={cardStyles} />

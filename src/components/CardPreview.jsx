@@ -77,8 +77,8 @@ export const CardPreview = ({ cardStyles }) => {
         </div>
         <div className="flow-root">
           <ul role="list" className="divide-y divide-gray-200">
-            {USERS.map(({ name, email, time, svg }) => (
-              <li className="py-3 sm:py-4">
+            {USERS.map(({ name, email, time, svg }, index) => (
+              <li key={index} className="py-3 sm:py-4">
                 <div className="flex items-center gap-4">
                   <div className="flex-shrink-0">
                     <img

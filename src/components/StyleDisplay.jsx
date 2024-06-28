@@ -11,7 +11,7 @@ export const StyleDisplay = ({ cardStyles }) => {
   } = cardStyles
 
   return (
-    <div className="bg-blue border-2 border-border rounded-xl grid py-7">
+    <div className="bg-blue border-2 border-border rounded-xl grid px-5 py-7">
       <h3 className="text-golden font-bold text-3xl text-center mb-4">
         Código CSS:
       </h3>
