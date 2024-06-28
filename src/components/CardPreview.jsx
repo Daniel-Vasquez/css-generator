@@ -56,14 +56,15 @@ export const CardPreview = ({ cardStyles }) => {
 
   return (
     <div
-      className="bg-blue border-2 border-border rounded-xl grid items-center py-7"
+      className="bg-blue border-2 border-border rounded-xl grid items-center px-4 py-7"
       style={{
         backgroundImage: `url(${backgroundImg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
-      <div style={CONTAINERSTYLES}>
+      <div className="w-full sm:w-auto" style={CONTAINERSTYLES}>
         <div className="flex items-center justify-between mb-4">
           <h5
             className="text-xl font-bold leading-none"
@@ -79,7 +80,7 @@ export const CardPreview = ({ cardStyles }) => {
           <ul role="list" className="divide-y divide-gray-200">
             {USERS.map(({ name, email, time, svg }, index) => (
               <li key={index} className="py-3 sm:py-4">
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col gap-3 items-center sm:flex-row">
                   <div className="flex-shrink-0">
                     <img
                       className="w-11 h-11 rounded-full"
@@ -87,7 +88,7 @@ export const CardPreview = ({ cardStyles }) => {
                       alt="Rick"
                     />
                   </div>
-                  <div className="flex-1 min-w-0">
+                  <div className="flex-1 text-center min-w-0 sm:text-start">
                     <p
                       className="font-semibold truncate"
                       style={{ color: color }}
