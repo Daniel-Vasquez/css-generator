@@ -1,8 +1,36 @@
-# React + Vite
+# React + Vite Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## CSS Generator
+This project is a React application bootstrapped with Vite. Vite provides a faster, easier development experience for modern web projects.
 
-Currently, two official plugins are available:
+With this project you can give styles to a Card and view them in real time.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
+
+To get started with this project, follow these steps:
+
+1. **Clone the repository:**
+
+```
+git clone git@github.com:Daniel-Vasquez/css-generator.git
+
+cd css-generator
+```
+
+2. **Install dependencies:**
+```
+npm install
+```
+
+3. **Run project:**
+```
+npm run dev
+```
+
+Navigate to http://localhost:3000 to view the application in your browser.
+
+Building for Production
+To build the application for production, run:
+```
+npm run build
+```
