@@ -5,8 +5,8 @@ import { StyleDisplay } from '@/components/StyleDisplay';
 
 const STYLESDEFAULT = {
   borderRadius: 10,
-  boxShadowColor: '#000000',
-  boxShadow: 0,
+  boxShadowColor: '#ffffff',
+  boxShadow: 5,
   boxX: 0,
   boxY: 0,
   color: '#ffffff',
