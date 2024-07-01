@@ -19,8 +19,11 @@ const CardEditor = () => {
   const [cardStyles, setCardStyles] = useState(STYLESDEFAULT);
 
   return (
-    <>
+    <section>
       <div className="mb-5">
+        <h1 className="text-white font-semibold text-3xl text-center sm:text-5xl">
+          Box Shadow CSS
+        </h1>
         <FormCard
           cardStyles={cardStyles}
           setCardStyles={setCardStyles}
@@ -40,7 +43,7 @@ const CardEditor = () => {
         <CardPreview cardStyles={cardStyles} />
         <StyleDisplay cardStyles={cardStyles} />
       </div>
-    </>
+    </section>
   );
 };
 
