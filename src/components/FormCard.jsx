@@ -6,7 +6,7 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
     boxX,
     boxY,
     color,
-    opacity,
+    blur,
     saturate,
   } = cardStyles
 
@@ -14,7 +14,7 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
     <div className="bg-blue border-2 border-border text-white font-semibold rounded-xl my-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-4 px-2">
       <div className="flex flex-col justify-center items-center gap-4 bg-blue-light rounded-md py-5 px-4">
         <p className="font-semibold text-xl text-golden">
-          Circunferencia:
+          Radio del borde:
         </p>
         <label className="flex justify-center items-center gap-2">
           Radio:
@@ -41,7 +41,7 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
         </label>
 
         <label className="flex justify-center items-center gap-2">
-          Intencidad:
+          Desenfoque:
           <input
             type="range"
             min="0"
@@ -85,13 +85,13 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
         </label>
 
         <label className="flex justify-center items-center gap-2">
-          Opacidad:
+          Desenfoque del fondo:
           <input
             type="range"
             min="0"
             max="30"
-            value={opacity}
-            onChange={(e) => setCardStyles({ ...cardStyles, opacity: e.target.value },)}
+            value={blur}
+            onChange={(e) => setCardStyles({ ...cardStyles, blur: e.target.value },)}
           />
         </label>
 

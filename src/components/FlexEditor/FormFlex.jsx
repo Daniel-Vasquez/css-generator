@@ -69,7 +69,7 @@ export const FormFlex = ({ stylesFlex, setStylesFlex }) => {
         >
           <option value="flex-start">flex-start</option>
           <option value="center">center</option>
-          <option value="end">flex-end</option>
+          <option value="flex-end">flex-end</option>
           <option value="stretch">stretch</option>
         </select>
       </label>

@@ -8,7 +8,7 @@ export const StyleDisplay = ({ cardStyles }) => {
     boxX,
     boxY,
     color,
-    opacity,
+    blur,
     saturate
   } = cardStyles
 
@@ -21,11 +21,11 @@ export const StyleDisplay = ({ cardStyles }) => {
         <pre className="styleDisplay-pre text-white bg-gray-700 p-5 rounded-md">
           <span className="text-green-500 font-semibold">.card {"{"}</span>
 {`
-  border-radius: ${borderRadius};
+  border-radius: ${borderRadius}px;
   box-shadow: ${boxX}px ${boxY}px ${boxShadow}px ${boxShadowColor};
   color: ${color};
   background-color: #111928bf;
-  backdrop-filter: blur(${opacity}px) saturate(${saturate}%);
+  backdrop-filter: blur(${blur}px) saturate(${saturate}%);
   overflow: hidden;
   padding: 20px;
   margin: 0px auto

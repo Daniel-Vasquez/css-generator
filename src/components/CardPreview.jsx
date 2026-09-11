@@ -39,7 +39,7 @@ export const CardPreview = ({ cardStyles }) => {
     boxX,
     boxY,
     color,
-    opacity,
+    blur,
     saturate
   } = cardStyles
 
@@ -49,7 +49,7 @@ export const CardPreview = ({ cardStyles }) => {
     color: `${color}`,
     padding: '20px',
     margin: '0px auto',
-    backdropFilter: `blur(${opacity}px) saturate(${saturate}%)`,
+    backdropFilter: `blur(${blur}px) saturate(${saturate}%)`,
     backgroundColor: 'rgba(17, 25, 40, 0.75)',
     overflow: 'hidden',
   }
@@ -85,7 +85,7 @@ export const CardPreview = ({ cardStyles }) => {
                     <img
                       className="w-11 h-11 rounded-full"
                       src={svg}
-                      alt="Rick"
+                      alt={name}
                     />
                   </div>
                   <div className="flex-1 text-center min-w-0 sm:text-start">

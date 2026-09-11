@@ -10,7 +10,7 @@ const STYLESDEFAULT = {
   boxX: 0,
   boxY: 0,
   color: '#ffffff',
-  opacity: 1,
+  blur: 1,
   saturate: 100,
   backdropFilter: "blur(11px) saturate(180%)",
 };

@@ -7,8 +7,6 @@ export const CardStylesFlex = ({ stylesFlex }) => {
     flexWrap,
   } = stylesFlex
 
-  const widthWindow = window.innerWidth
-
   return (
     <div className="bg-blue border-2 border-border rounded-xl px-5 py-7">
       <h3 className="text-golden font-bold text-3xl text-center mb-4">
@@ -51,14 +49,8 @@ export const CardStylesFlex = ({ stylesFlex }) => {
               <p>
                 {"  "}gap:{" "}
                 <span className={`${display === "block" ? "line-through text-red-400" : "text-golden"} `}>
-                  10px;
+                  20px;
                 </span>
-              </p>
-              <p>
-                {" "} width: {widthWindow < 1280 ? "100%" : "36rem"};
-              </p>
-              <p>
-                {" "} height: { widthWindow < 1280 ? "20rem" : "45rem" };
               </p>
             <span className="text-green-500 font-semibold">{"}"}</span>
           </pre>
