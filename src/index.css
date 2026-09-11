@@ -20,3 +20,19 @@ body {
 #root {
   width: 100%;
 }
+.css-code {
+  scroll-behavior: smooth;
+}
+
+.css-code::-webkit-scrollbar {
+  height: 8px;
+}
+
+.css-code::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.css-code::-webkit-scrollbar-thumb {
+  background-color: #fbbf24;
+  border-radius: 10px;
+}

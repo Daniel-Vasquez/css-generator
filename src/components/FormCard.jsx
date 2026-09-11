@@ -1,111 +1,51 @@
+import { ControlGroup } from '@/components/ui/ControlGroup'
+import { RangeControl } from '@/components/ui/RangeControl'
+import { ColorControl } from '@/components/ui/ColorControl'
+
 export const FormCard = ({ cardStyles, setCardStyles }) => {
   const {
     borderRadius,
     boxShadowColor,
     boxShadow,
+    boxSpread,
     boxX,
     boxY,
+    inset,
     color,
     blur,
     saturate,
   } = cardStyles
 
+  const update = (key) => (value) => setCardStyles({ ...cardStyles, [key]: value })
+
   return (
-    <div className="bg-blue border-2 border-border text-white font-semibold rounded-xl my-4 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 py-4 px-2">
-      <div className="flex flex-col justify-center items-center gap-4 bg-blue-light rounded-md py-5 px-4">
-        <p className="font-semibold text-xl text-golden">
-          Radio del borde:
-        </p>
-        <label className="flex justify-center items-center gap-2">
-          Radio:
-          <input
-            type="range"
-            min="0"
-            max="50"
-            value={borderRadius}
-            onChange={(e) => setCardStyles({ ...cardStyles, borderRadius: e.target.value },)}
-          />
-        </label>
-      </div>
+    <>
+      <ControlGroup title="Radio del borde">
+        <RangeControl label="Radio" min={0} max={50} unit="px" value={borderRadius} onChange={update('borderRadius')} />
+      </ControlGroup>
 
-      <div className="flex flex-col justify-center items-center gap-4 bg-blue-light rounded-md py-5 px-4">
-        <p className="font-semibold text-xl text-golden">Sombra:</p>
-        <label className="flex justify-center items-center gap-2">
-          box-shadow-color:
+      <ControlGroup title="Sombra">
+        <ColorControl label="Color" value={boxShadowColor} onChange={update('boxShadowColor')} />
+        <RangeControl label="Posición X" min={-50} max={50} unit="px" value={boxX} onChange={update('boxX')} />
+        <RangeControl label="Posición Y" min={-50} max={50} unit="px" value={boxY} onChange={update('boxY')} />
+        <RangeControl label="Desenfoque" min={0} max={50} unit="px" value={boxShadow} onChange={update('boxShadow')} />
+        <RangeControl label="Expansión" min={-20} max={20} unit="px" value={boxSpread} onChange={update('boxSpread')} />
+        <label className="flex items-center justify-between gap-2 text-sm cursor-pointer">
+          Sombra interior (inset)
           <input
-            type="color"
-            className="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
-            value={boxShadowColor}
-            onChange={(e) => setCardStyles({ ...cardStyles, boxShadowColor: e.target.value },)}
+            type="checkbox"
+            checked={inset}
+            onChange={(e) => update('inset')(e.target.checked)}
+            className="h-4 w-4 accent-golden cursor-pointer"
           />
         </label>
+      </ControlGroup>
 
-        <label className="flex justify-center items-center gap-2">
-          Desenfoque:
-          <input
-            type="range"
-            min="0"
-            max="20"
-            value={boxShadow}
-            onChange={(e) => setCardStyles({ ...cardStyles, boxShadow: e.target.value },)}
-          />
-        </label>
-        <label className="flex justify-center items-center gap-2">
-          Posición X:
-          <input
-            type="range"
-            min="-20"
-            max="20"
-            value={boxX}
-            onChange={(e) => setCardStyles({ ...cardStyles, boxX: e.target.value },)}
-          />
-        </label>
-        <label className="flex justify-center items-center gap-2">
-          Posición Y:
-          <input
-            type="range"
-            min="-20"
-            max="20"
-            value={boxY}
-            onChange={(e) => setCardStyles({ ...cardStyles, boxY: e.target.value },)}
-          />
-        </label>
-      </div>
-
-      <div className="flex flex-col justify-center items-center gap-4 bg-blue-light rounded-md py-5 px-4">
-        <p className="font-semibold text-xl text-golden">Colores:</p>
-        <label className="flex justify-center items-center gap-2">
-          Color del texto:
-          <input
-            type="color"
-            className="p-1 h-10 w-14 block bg-white border border-gray-200 cursor-pointer rounded-lg disabled:opacity-50 disabled:pointer-events-none"
-            value={color}
-            onChange={(e) => setCardStyles({ ...cardStyles, color: e.target.value },)}
-          />
-        </label>
-
-        <label className="flex justify-center items-center gap-2">
-          Desenfoque del fondo:
-          <input
-            type="range"
-            min="0"
-            max="30"
-            value={blur}
-            onChange={(e) => setCardStyles({ ...cardStyles, blur: e.target.value },)}
-          />
-        </label>
-
-        <label className="flex justify-center items-center gap-2">
-          Saturación:
-          <input
-            type="range"
-            min="0"
-            max="400"
-            value={saturate}
-            onChange={(e) => setCardStyles({ ...cardStyles, saturate: e.target.value },)}
-          />
-        </label>
-      </div>
-    </div>
+      <ControlGroup title="Fondo y texto">
+        <ColorControl label="Color del texto" value={color} onChange={update('color')} />
+        <RangeControl label="Desenfoque del fondo" min={0} max={30} unit="px" value={blur} onChange={update('blur')} />
+        <RangeControl label="Saturación" min={0} max={400} unit="%" value={saturate} onChange={update('saturate')} />
+      </ControlGroup>
+    </>
   )
 }

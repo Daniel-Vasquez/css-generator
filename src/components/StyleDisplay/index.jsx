@@ -1,38 +1,19 @@
-import "@/components/StyleDisplay/index.css";
+import { CssCode } from '@/components/ui/CssCode'
+import { buildBoxShadow } from '@/utils/boxShadow'
 
 export const StyleDisplay = ({ cardStyles }) => {
-  const {
-    borderRadius,
-    boxShadowColor,
-    boxShadow,
-    boxX,
-    boxY,
-    color,
-    blur,
-    saturate
-  } = cardStyles
+  const { borderRadius, color, blur, saturate } = cardStyles
 
-  return (
-    <div className="bg-blue border-2 border-border rounded-xl px-5 py-7">
-      <h3 className="text-golden font-bold text-3xl text-center mb-4">
-        Código CSS:
-      </h3>
-      <div className="flex justify-center text-xl">
-        <pre className="styleDisplay-pre text-white bg-gray-700 p-5 rounded-md">
-          <span className="text-green-500 font-semibold">.card {"{"}</span>
-{`
-  border-radius: ${borderRadius}px;
-  box-shadow: ${boxX}px ${boxY}px ${boxShadow}px ${boxShadowColor};
-  color: ${color};
-  background-color: #111928bf;
-  backdrop-filter: blur(${blur}px) saturate(${saturate}%);
-  overflow: hidden;
-  padding: 20px;
-  margin: 0px auto
-`}
-          <span className="text-green-500 font-semibold">{"}"}</span>
-        </pre>
-      </div>
-    </div>
-  );
-};
+  const rules = [
+    { prop: 'border-radius', value: `${borderRadius}px` },
+    { prop: 'box-shadow', value: buildBoxShadow(cardStyles) },
+    { prop: 'color', value: color },
+    { prop: 'background-color', value: 'rgba(17, 25, 40, 0.75)' },
+    { prop: 'backdrop-filter', value: `blur(${blur}px) saturate(${saturate}%)` },
+    { prop: 'overflow', value: 'hidden' },
+    { prop: 'padding', value: '20px' },
+    { prop: 'margin', value: '0 auto' },
+  ]
+
+  return <CssCode selector=".card" rules={rules} />
+}

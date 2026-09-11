@@ -3,6 +3,7 @@ import rickSvg from '@/images/rick.svg'
 import mortySvg from '@/images/morty.svg'
 import chewbaccaSvg from '@/images/chewbacca.svg'
 import darthVaderSvg from '@/images/darth-vader.svg'
+import { buildBoxShadow } from "@/utils/boxShadow"
 
 const USERS = [
   {
@@ -32,26 +33,18 @@ const USERS = [
 ]
 
 export const CardPreview = ({ cardStyles }) => {
-  const {
-    borderRadius,
-    boxShadowColor,
-    boxShadow,
-    boxX,
-    boxY,
-    color,
-    blur,
-    saturate
-  } = cardStyles
+  const { borderRadius, color, blur, saturate } = cardStyles
 
   const CONTAINERSTYLES = {
     borderRadius: `${borderRadius}px`,
-    boxShadow: `${boxX}px ${boxY}px ${boxShadow}px ${boxShadowColor}`,
+    boxShadow: buildBoxShadow(cardStyles),
     color: `${color}`,
     padding: '20px',
     margin: '0px auto',
     backdropFilter: `blur(${blur}px) saturate(${saturate}%)`,
     backgroundColor: 'rgba(17, 25, 40, 0.75)',
-    overflow: 'hidden',
+    overflow: "hidden",
+    transition: "box-shadow .15s, border-radius .15s, backdrop-filter .15s",
   }
 
   return (

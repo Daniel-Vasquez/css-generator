@@ -1,4 +1,6 @@
-import React from 'react'
+import { ControlGroup } from '@/components/ui/ControlGroup'
+import { SelectControl } from '@/components/ui/SelectControl'
+import { RangeControl } from '@/components/ui/RangeControl'
 
 export const FormFlex = ({ stylesFlex, setStylesFlex }) => {
   const {
@@ -7,87 +9,54 @@ export const FormFlex = ({ stylesFlex, setStylesFlex }) => {
     justifyContent,
     alignItems,
     flexWrap,
+    gap,
+    itemCount,
   } = stylesFlex
 
+  const update = (key) => (value) => setStylesFlex({ ...stylesFlex, [key]: value })
+  const isBlock = display === 'block'
+
   return (
-    <div className="flex justify-center items-center flex-col w-full gap-7 bg-blue border-2 border-border rounded-xl py-5 px-4 my-4 mb-6 md:flex-row">
-      <label htmlFor="display" className="flex items-center flex-col gap-3 text-sm font-semibold text-white">
-        Display:
-        <select
-          id="display"
-          className="bg-transparent border border-gray-300 text-white text-sm text-center rounded-lg focus:ring-golden focus:border-golden block w-full p-2"
-          value={display}
-          onChange={(e) => setStylesFlex({ ...stylesFlex, display: e.target.value })}
-        >
-          <option value="flex">Flex</option>
-          <option value="block">block</option>
-        </select>
-      </label>
-
-      <label htmlFor="direction" className="flex items-center flex-col gap-2 text-sm font-semibold text-white">
-        Flex Direction:
-        <select
-          id="direction"
-          className="bg-transparent border border-gray-300 text-white text-sm text-center rounded-lg focus:ring-golden focus:border-golden block w-full p-2 disabled:border-red-600 disabled:text-red-600 disabled:cursor-no-drop"
+    <>
+      <ControlGroup title="Contenedor">
+        <SelectControl label="Display" value={display} options={['flex', 'block']} onChange={update('display')} />
+        <SelectControl
+          label="Flex Direction"
           value={flexDirection}
-          onChange={(e) => setStylesFlex({ ...stylesFlex, flexDirection: e.target.value })}
-          disabled={display === "block"}
-        >
-          <option value="row">row</option>
-          <option value="row-reverse">row-reverse</option>
-          <option value="column">column</option>
-          <option value="column-reverse">column-reverse</option>
-        </select>
-      </label>
-
-      <label htmlFor="justify" className="flex items-center flex-col gap-2 text-sm font-semibold text-white">
-        Justify Content:
-        <select
-          id="justify"
-          className="bg-transparent border border-gray-300 text-white text-sm text-center rounded-lg focus:ring-golden focus:border-golden block w-full p-2 disabled:border-red-600 disabled:text-red-600 disabled:cursor-no-drop"
+          options={['row', 'row-reverse', 'column', 'column-reverse']}
+          disabled={isBlock}
+          onChange={update('flexDirection')}
+        />
+        <SelectControl
+          label="Justify Content"
           value={justifyContent}
-          onChange={(e) => setStylesFlex({ ...stylesFlex, justifyContent: e.target.value })}
-          disabled={display === "block"}
-        >
-          <option value="flex-start">flex-start</option>
-          <option value="center">center</option>
-          <option value="flex-end">flex-end</option>
-          <option value="space-between">space-between</option>
-          <option value="space-around">space-around</option>
-          <option value="space-evenly">space-evenly</option>
-        </select>
-      </label>
-
-      <label htmlFor="items" className="flex items-center flex-col gap-2 text-sm font-semibold text-white">
-        Align Items:
-        <select
-          id="items"
-          className="bg-transparent border border-gray-300 text-white text-sm text-center rounded-lg focus:ring-golden focus:border-golden block w-full p-2 disabled:border-red-600 disabled:text-red-600 disabled:cursor-no-drop"
+          options={['flex-start', 'center', 'flex-end', 'space-between', 'space-around', 'space-evenly']}
+          disabled={isBlock}
+          onChange={update('justifyContent')}
+        />
+        <SelectControl
+          label="Align Items"
           value={alignItems}
-          onChange={(e) => setStylesFlex({ ...stylesFlex, alignItems: e.target.value })}
-          disabled={display === "block"}
-        >
-          <option value="flex-start">flex-start</option>
-          <option value="center">center</option>
-          <option value="flex-end">flex-end</option>
-          <option value="stretch">stretch</option>
-        </select>
-      </label>
-
-      <label htmlFor="wrap" className="flex items-center flex-col gap-2 text-sm font-semibold text-white">
-        Flex Wrap:
-        <select
-          id="wrap"
-          className="bg-transparent border border-gray-300 text-white text-sm text-center rounded-lg focus:ring-golden focus:border-golden block w-full p-2 disabled:border-red-600 disabled:text-red-600 disabled:cursor-no-drop"
+          options={['flex-start', 'center', 'flex-end', 'stretch']}
+          disabled={isBlock}
+          onChange={update('alignItems')}
+        />
+        <SelectControl
+          label="Flex Wrap"
           value={flexWrap}
-          onChange={(e) => setStylesFlex({ ...stylesFlex, flexWrap: e.target.value })}
-          disabled={display === "block"}
-        >
-          <option value="nowrap">no-wrap</option>
-          <option value="wrap">wrap</option>
-          <option value="wrap-reverse">wrap-reverse</option>
-        </select>
-      </label>
-    </div>
+          options={['nowrap', 'wrap', 'wrap-reverse']}
+          disabled={isBlock}
+          onChange={update('flexWrap')}
+        />
+        <RangeControl label="Gap" min={0} max={60} unit="px" value={gap} onChange={update('gap')} />
+      </ControlGroup>
+
+      <ControlGroup title="Ítems">
+        <RangeControl label="Cantidad" min={1} max={12} value={itemCount} onChange={update('itemCount')} />
+        <p className="text-xs text-gray-400">
+          Los ítems tienen alturas distintas para que se note <code>align-items</code>. Añade más para ver el efecto de <code>flex-wrap</code>.
+        </p>
+      </ControlGroup>
+    </>
   )
 }

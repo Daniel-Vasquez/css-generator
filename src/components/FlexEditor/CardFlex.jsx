@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { FormFlex } from "@/components/FlexEditor/FormFlex";
 import { CardPreviewFlex } from "@/components/FlexEditor/CardPreviewFlex";
 import { CardStylesFlex } from "@/components/FlexEditor/CardStylesFlex";
+import { EditorLayout } from "@/components/ui/EditorLayout";
 
 const STYLESDEFAULTFLEX = {
   display: "flex",
@@ -9,35 +10,19 @@ const STYLESDEFAULTFLEX = {
   justifyContent: "center",
   alignItems: "center",
   flexWrap: "wrap",
+  gap: 20,
+  itemCount: 3,
 }
 
 export const CardGrid = () => {
-  const [stylesFlex, setStylesFlex] = useState(STYLESDEFAULTFLEX);
+  const [stylesFlex, setStylesFlex] = useLocalStorage("css-editor:flex", STYLESDEFAULTFLEX);
 
   return (
-    <section>
-      <h1 className="text-white text-3xl font-semibold text-center sm:text-5xl">
-        Flex CSS
-      </h1>
-
-      <FormFlex
-        stylesFlex={stylesFlex}
-        setStylesFlex={setStylesFlex}
-      />
-
-      <div className="grid grid-cols-1 xl:grid-cols-2 gap-4 pb-5">
-        <CardPreviewFlex stylesFlex={stylesFlex} />
-        <CardStylesFlex stylesFlex={stylesFlex} />
-      </div>
-
-      <div className="flex justify-center mb-6">
-        <button
-          className="bg-golden text-white font-semibold py-2 px-4 rounded-md"
-          onClick={() => setStylesFlex(STYLESDEFAULTFLEX)}
-        >
-          Restablecer
-        </button>
-      </div>
-    </section>
+    <EditorLayout
+      controls={<FormFlex stylesFlex={stylesFlex} setStylesFlex={setStylesFlex} />}
+      preview={<CardPreviewFlex stylesFlex={stylesFlex} />}
+      code={<CardStylesFlex stylesFlex={stylesFlex} />}
+      onReset={() => setStylesFlex(STYLESDEFAULTFLEX)}
+    />
   )
 }
