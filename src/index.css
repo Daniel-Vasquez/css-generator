@@ -94,3 +94,13 @@ input[type='range']:focus-visible::-moz-range-thumb {
   background-color: #fbbf24;
   border-radius: 10px;
 }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

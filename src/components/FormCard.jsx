@@ -36,7 +36,7 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
             type="checkbox"
             checked={inset}
             onChange={(e) => update('inset')(e.target.checked)}
-            className="h-4 w-4 accent-golden cursor-pointer"
+            className="h-4 w-4 accent-golden cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 focus-visible:ring-offset-blue-light"
           />
         </label>
       </ControlGroup>

@@ -5,7 +5,7 @@ export const SelectControl = ({ label, value, options, disabled = false, onChang
 
   return (
     <div className="flex items-center justify-between gap-2 text-sm">
-      <label htmlFor={id} className={disabled ? 'text-gray-500' : ''}>
+      <label htmlFor={id} className={disabled ? 'text-gray-400' : ''}>
         {label}
       </label>
       <select

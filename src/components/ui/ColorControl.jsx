@@ -24,7 +24,7 @@ export const ColorControl = ({ label, value, onChange }) => {
           type="color"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className="h-9 w-10 p-0.5 bg-white border border-gray-200 rounded-md cursor-pointer"
+          className="h-9 w-10 p-0.5 bg-white border border-gray-200 rounded-md cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-golden focus-visible:ring-offset-2 focus-visible:ring-offset-blue-light"
         />
         <input
           type="text"

@@ -19,7 +19,7 @@ export const RangeControl = ({ label, value, min, max, step = 1, unit = '', onCh
             onChange={handleChange}
             className="w-16 bg-blue text-white text-right rounded border border-border px-1 py-0.5 text-sm focus:outline-none focus:border-golden"
           />
-          {unit && <span className="text-gray-400 w-6">{unit}</span>}
+          {unit && <span className="text-gray-300 w-6">{unit}</span>}
         </span>
       </div>
       <input
@@ -30,6 +30,7 @@ export const RangeControl = ({ label, value, min, max, step = 1, unit = '', onCh
         step={step}
         value={value}
         onChange={handleChange}
+        aria-valuetext={``}
         className="w-full cursor-pointer"
       />
     </div>

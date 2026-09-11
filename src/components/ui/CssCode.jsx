@@ -31,13 +31,15 @@ export const CssCode = ({ selector, rules }) => {
       <button
         type="button"
         onClick={copy}
-        aria-live="polite"
         className={`absolute top-3 right-3 text-xs font-semibold py-1.5 px-3 rounded-md transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-golden ${
           copied ? 'bg-green-500 text-black' : 'bg-golden text-black hover:bg-yellow-300'
         }`}
       >
         {copied ? '¡Copiado!' : 'Copiar CSS'}
       </button>
+      <span className="sr-only" role="status" aria-live="polite">
+        {copied ? "CSS copiado al portapapeles" : ""}
+      </span>
       <pre className="css-code text-white bg-gray-700 p-5 pt-12 rounded-md text-base overflow-x-auto">
         <span className="text-green-500 font-semibold">{selector} {'{'}</span>
         {'\n'}

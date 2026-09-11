@@ -53,7 +53,7 @@ export const FormFlex = ({ stylesFlex, setStylesFlex }) => {
 
       <ControlGroup title="Ítems">
         <RangeControl label="Cantidad" min={1} max={12} value={itemCount} onChange={update('itemCount')} />
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-gray-300">
           Los ítems tienen alturas distintas para que se note <code>align-items</code>. Añade más para ver el efecto de <code>flex-wrap</code>.
         </p>
       </ControlGroup>

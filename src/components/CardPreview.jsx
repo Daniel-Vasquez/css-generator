@@ -59,12 +59,12 @@ export const CardPreview = ({ cardStyles }) => {
     >
       <div className="w-full sm:w-auto" style={CONTAINERSTYLES}>
         <div className="flex items-center justify-between mb-4">
-          <h5
+          <h3
             className="text-xl font-bold leading-none"
             style={{ color: color }}
           >
             Usuarios
-          </h5>
+          </h3>
           <a href="#" className="text-md font-semibold text-blue-600 hover:underline">
             Ver todos
           </a>
@@ -88,7 +88,7 @@ export const CardPreview = ({ cardStyles }) => {
                     >
                       {name}
                     </p>
-                    <p className="text-sm text-gray-500 truncate">
+                    <p className="text-sm text-gray-300 truncate">
                       {email}
                     </p>
                   </div>
