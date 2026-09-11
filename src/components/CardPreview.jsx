@@ -32,7 +32,14 @@ const USERS = [
   },
 ]
 
-export const CardPreview = ({ cardStyles }) => {
+const BACKGROUNDS = [
+  { id: "image", label: "Imagen", style: { backgroundImage: `url(${backgroundImg})`, backgroundSize: "cover", backgroundPosition: "center" } },
+  { id: "dark", label: "Oscuro", style: { backgroundColor: "#111927" } },
+  { id: "light", label: "Claro", style: { backgroundColor: "#f3f4f6" } },
+]
+
+export const CardPreview = ({ cardStyles, background = "image", setBackground }) => {
+  const bg = BACKGROUNDS.find((b) => b.id === background) ?? BACKGROUNDS[0]
   const { borderRadius, color, blur, saturate } = cardStyles
 
   const CONTAINERSTYLES = {
@@ -49,14 +56,24 @@ export const CardPreview = ({ cardStyles }) => {
 
   return (
     <div
-      className="bg-blue border-2 border-border rounded-xl grid items-center px-4 py-7"
-      style={{
-        backgroundImage: `url(${backgroundImg})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-      }}
+      className="relative bg-blue border-2 border-border rounded-xl grid items-center px-4 pt-14 pb-7 transition-colors"
+      style={bg.style}
     >
+      <div role="group" aria-label="Fondo del preview" className="absolute top-3 right-3 flex gap-1 bg-blue/90 rounded-lg p-1">
+        {BACKGROUNDS.map(({ id, label }) => (
+          <button
+            key={id}
+            type="button"
+            aria-pressed={id === bg.id}
+            onClick={() => setBackground?.(id)}
+            className={`py-1 px-2.5 rounded-md text-xs font-semibold transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-golden ${
+              id === bg.id ? "bg-golden text-black" : "text-white hover:bg-blue-light"
+            }`}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
       <div className="w-full sm:w-auto" style={CONTAINERSTYLES}>
         <div className="flex items-center justify-between mb-4">
           <h3

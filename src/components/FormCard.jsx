@@ -1,11 +1,13 @@
 import { ControlGroup } from '@/components/ui/ControlGroup'
 import { RangeControl } from '@/components/ui/RangeControl'
 import { ColorControl } from '@/components/ui/ColorControl'
+import { SHADOW_PRESETS } from '@/components/shadowPresets'
 
 export const FormCard = ({ cardStyles, setCardStyles }) => {
   const {
     borderRadius,
     boxShadowColor,
+    boxShadowOpacity,
     boxShadow,
     boxSpread,
     boxX,
@@ -20,12 +22,28 @@ export const FormCard = ({ cardStyles, setCardStyles }) => {
 
   return (
     <>
+      <ControlGroup title="Presets">
+        <div className="flex flex-wrap gap-2">
+          {SHADOW_PRESETS.map(({ name, styles }) => (
+            <button
+              key={name}
+              type="button"
+              onClick={() => setCardStyles({ ...cardStyles, ...styles })}
+              className="text-xs font-semibold text-white bg-blue border border-border py-1.5 px-3 rounded-md hover:border-golden hover:text-golden transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-golden"
+            >
+              {name}
+            </button>
+          ))}
+        </div>
+      </ControlGroup>
+
       <ControlGroup title="Radio del borde">
         <RangeControl label="Radio" min={0} max={50} unit="px" value={borderRadius} onChange={update('borderRadius')} />
       </ControlGroup>
 
       <ControlGroup title="Sombra">
         <ColorControl label="Color" value={boxShadowColor} onChange={update('boxShadowColor')} />
+        <RangeControl label="Opacidad" min={0} max={100} unit="%" value={boxShadowOpacity} onChange={update('boxShadowOpacity')} />
         <RangeControl label="Posición X" min={-50} max={50} unit="px" value={boxX} onChange={update('boxX')} />
         <RangeControl label="Posición Y" min={-50} max={50} unit="px" value={boxY} onChange={update('boxY')} />
         <RangeControl label="Desenfoque" min={0} max={50} unit="px" value={boxShadow} onChange={update('boxShadow')} />

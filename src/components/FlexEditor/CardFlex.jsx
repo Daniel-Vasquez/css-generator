@@ -21,7 +21,7 @@ export const CardGrid = () => {
     <EditorLayout
       controls={<FormFlex stylesFlex={stylesFlex} setStylesFlex={setStylesFlex} />}
       preview={<CardPreviewFlex stylesFlex={stylesFlex} />}
-      code={<CardStylesFlex stylesFlex={stylesFlex} />}
+      code={(format) => <CardStylesFlex stylesFlex={stylesFlex} format={format} />}
       onReset={() => setStylesFlex(STYLESDEFAULTFLEX)}
     />
   )
