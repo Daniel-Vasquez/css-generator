@@ -30,7 +30,7 @@ export const RangeControl = ({ label, value, min, max, step = 1, unit = '', onCh
         step={step}
         value={value}
         onChange={handleChange}
-        className="w-full h-2 accent-golden cursor-pointer focus-visible:outline-golden"
+        className="w-full cursor-pointer"
       />
     </div>
   )

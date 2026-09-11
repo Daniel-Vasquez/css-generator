@@ -1,4 +1,3 @@
-import './App.css';
 import { useLocalStorage } from '@/hooks/useLocalStorage';
 import CardEditor from '@/components/CardEditor';
 import { CardGrid } from '@/components/FlexEditor/CardFlex';
